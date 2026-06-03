@@ -1,0 +1,53 @@
+---
+const navItems = [
+  { name: 'Úvod', href: '/' },
+  { name: 'Služby', href: '/sluzby' },
+  { name: 'PENB', href: '/penb' },
+  { name: 'Ceník', href: '/cenik' },
+  { name: 'O mně', href: '/odborna-zpusobilost' },
+  { name: 'Kontakt', href: '#kontakt' },
+];
+---
+
+<header class="primary-header wrapper">
+  <div class="cluster" style="--cluster-justify: space-between; padding-block: 1.5rem;">
+    <a href="/" class="logo">
+      <span class="font-bold text-xl text-green-700">Ing. Petr Novák</span>
+    </a>
+    <nav class="primary-navigation">
+      <ul class="cluster" style="--gutter: 2rem;">
+        {navItems.map(item => (
+          <li><a href={item.href} class="nav-link" aria-current={Astro.url.pathname === item.href || (item.href !== '/' && Astro.url.pathname.startsWith(item.href)) ? 'page' : undefined}>{item.name}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <a href="#kontakt" class="button" data-type="primary">Poptat konzultaci</a>
+  </div>
+</header>
+
+<style lang="scss">
+  .nav-link {
+    text-decoration: none;
+    color: #4a4a4a;
+    font-weight: 500;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #15803d; // green-700
+    }
+  }
+
+  .button {
+    background-color: #064e3b; // dark green
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+</style>

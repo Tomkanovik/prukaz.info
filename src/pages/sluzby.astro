@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Služby - Ing. Petr Novák">
+  <Header />
+
+  <main>
+    <section class="py-20 bg-gray-50">
+      <div class="wrapper stack" style="--space: 4rem;">
+        <div class="stack" style="--space: 1.5rem; max-width: 800px;">
+          <h1 class="text-4xl font-bold">Nabízené služby</h1>
+          <p class="text-xl text-gray-600">
+            Jako certifikovaný energetický specialista nabízím komplexní služby v oblasti energetiky budov. Od základních průkazů až po dotační poradenství.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              title: 'Průkazy energetické náročnosti (PENB)',
+              desc: 'Zpracování průkazů pro novostavby, rekonstrukce, prodeje i pronájmy nemovitostí.',
+              icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'
+            },
+            {
+              title: 'Nová zelená úsporám',
+              desc: 'Odborné posudky a energetické hodnocení pro získání dotací z programu Nová zelená úsporám.',
+              icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+            },
+            {
+              title: 'Energetické audity a posudky',
+              desc: 'Detailní analýza energetického hospodářství s návrhem opatření pro snížení spotřeby.',
+              icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z'
+            }
+          ].map(service => (
+            <div class="bg-white p-10 rounded-2xl shadow-sm hover:shadow-md transition-shadow stack" style="--space: 1.5rem;">
+              <div class="w-14 h-14 bg-green-700 text-white rounded-xl flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={service.icon} />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 leading-tight">{service.title}</h3>
+              <p class="text-gray-600 leading-relaxed">{service.desc}</p>
+              <a href="#kontakt" class="text-green-700 font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                Poptat službu
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24">
+      <div class="wrapper">
+        <div class="bg-green-900 rounded-[3rem] overflow-hidden text-white">
+          <div class="grid md:grid-cols-2">
+            <div class="p-12 md:p-20 stack" style="--space: 2rem;">
+              <h2 class="text-3xl md:text-4xl font-bold">Potřebujete individuální řešení?</h2>
+              <p class="text-xl text-green-100">
+                Máte specifický projekt nebo potřebujete konzultaci v oblasti, kterou jste zde nenašli? Ozvěte se mi a probereme možnosti spolupráce.
+              </p>
+              <div class="cluster" style="--gutter: 1.5rem;">
+                <a href="tel:+420123456789" class="bg-white text-green-900 px-8 py-4 rounded-xl font-bold hover:bg-green-50 transition-colors">Zavolat +420 123 456 789</a>
+              </div>
+            </div>
+            <div class="hidden md:block bg-green-800 opacity-50 relative">
+               <div class="absolute inset-0 flex items-center justify-center text-green-900/20">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                  </svg>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

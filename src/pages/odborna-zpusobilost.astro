@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Odborná způsobilost - Ing. Petr Novák">
+  <Header />
+
+  <main>
+    <section class="py-20">
+      <div class="wrapper">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+          <div class="stack" style="--space: 2rem;">
+             <h1 class="text-4xl font-bold">Odborná způsobilost</h1>
+             <p class="text-xl text-gray-600 leading-relaxed">
+               Jsem zapsán v seznamu energetických specialistů vedeném Ministerstvem průmyslu a obchodu pod číslem oprávnění 1234.
+             </p>
+             <div class="stack" style="--space: 1.5rem;">
+                <div class="flex items-start gap-4 p-6 bg-gray-50 rounded-2xl">
+                   <div class="w-12 h-12 bg-green-700 text-white rounded-lg flex items-center justify-center shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                   </div>
+                   <div>
+                      <h3 class="font-bold text-lg text-gray-900">Oprávnění MPO</h3>
+                      <p class="text-gray-600">Certifikace pro zpracování energetických auditů, posudků a průkazů energetické náročnosti.</p>
+                   </div>
+                </div>
+                <div class="flex items-start gap-4 p-6 bg-gray-50 rounded-2xl">
+                   <div class="w-12 h-12 bg-green-700 text-white rounded-lg flex items-center justify-center shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                      </svg>
+                   </div>
+                   <div>
+                      <h3 class="font-bold text-lg text-gray-900">Vzdělání v oboru</h3>
+                      <p class="text-gray-600">Vysokoškolské vzdělání technického směru se zaměřením na energetickou náročnost budov.</p>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="relative">
+             <div class="aspect-[3/4] bg-gray-200 rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center">
+                <span class="text-gray-400 font-medium">[Obrázek: Portrét Ing. Petr Novák]</span>
+             </div>
+             <div class="absolute -bottom-6 -left-6 bg-white p-8 rounded-2xl shadow-xl border border-gray-100 max-w-xs">
+                <p class="italic text-gray-600 mb-4">"Kvalitně zpracovaný energetický průkaz není jen zákonná nutnost, ale i užitečný nástroj pro budoucí úspory."</p>
+                <span class="font-bold text-gray-900">— Ing. Petr Novák</span>
+             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
