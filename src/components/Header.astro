@@ -14,40 +14,54 @@ const navItems = [
     <a href="/" class="logo">
       <span class="font-bold text-xl text-green-700">Ing. Petr Novák</span>
     </a>
-    <nav class="primary-navigation">
+
+    <div class="cluster" style="--gutter: 1rem;">
+      <a href="#kontakt" class="button header-cta" data-type="primary">Poptat konzultaci</a>
+
+      <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+          <span class="sr-only">Menu</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-hamburger h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-close h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+      </button>
+    </div>
+
+    <nav class="primary-navigation" id="primary-navigation">
       <ul class="cluster" style="--gutter: 2rem;">
         {navItems.map(item => (
           <li><a href={item.href} class="nav-link" aria-current={Astro.url.pathname === item.href || (item.href !== '/' && Astro.url.pathname.startsWith(item.href)) ? 'page' : undefined}>{item.name}</a></li>
         ))}
+        <li class="mobile-only-cta"><a href="#kontakt" class="button" data-type="primary">Poptat konzultaci</a></li>
       </ul>
     </nav>
-    <a href="#kontakt" class="button" data-type="primary">Poptat konzultaci</a>
   </div>
 </header>
 
-<style lang="scss">
-  .nav-link {
-    text-decoration: none;
-    color: #4a4a4a;
-    font-weight: 500;
-    transition: color 0.2s ease;
+<script>
+  const navToggle = document.querySelector('.mobile-nav-toggle');
+  const primaryNav = document.querySelector('.primary-navigation');
 
-    &:hover {
-      color: #15803d; // green-700
+  navToggle?.addEventListener('click', () => {
+    const visibility = primaryNav?.hasAttribute('data-visible');
+
+    if (!visibility) {
+      primaryNav?.setAttribute('data-visible', '');
+      navToggle.setAttribute('aria-expanded', 'true');
+    } else {
+      primaryNav?.removeAttribute('data-visible');
+      navToggle.setAttribute('aria-expanded', 'false');
     }
-  }
+  });
 
-  .button {
-    background-color: #064e3b; // dark green
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.25rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: opacity 0.2s ease;
-
-    &:hover {
-      opacity: 0.9;
-    }
-  }
-</style>
+  // Close menu when clicking on a link
+  const navLinks = document.querySelectorAll('.nav-link, .mobile-only-cta .button');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        primaryNav?.removeAttribute('data-visible');
+        navToggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

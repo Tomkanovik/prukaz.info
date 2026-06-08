@@ -1,14 +1,4 @@
 /* Blocks */
-.primary-header {
-  border-bottom: 1px solid #f3f4f6;
-}
-
-.nav-link {
-  &[aria-current="page"] {
-    color: #15803d;
-    font-weight: 700;
-  }
-}
 
 .badge {
   display: inline-block;

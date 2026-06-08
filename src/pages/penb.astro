@@ -8,16 +8,16 @@ import Footer from '../components/Footer.astro';
   <Header />
 
   <main>
-    <section class="py-20">
-      <div class="wrapper stack" style="--space: 4rem;">
+    <section class="py-12 md:py-20">
+      <div class="wrapper stack" style="--space: 3rem;">
         <div class="stack" style="--space: 1.5rem; max-width: 800px;">
-          <h1 class="text-4xl font-bold italic underline decoration-green-500 underline-offset-8">Kdy je povinný PENB?</h1>
+          <h1 class="text-3xl md:text-4xl font-bold italic underline decoration-green-500 underline-offset-8">Kdy je povinný PENB?</h1>
           <p class="text-xl text-gray-600">
             Průkaz energetické náročnosti budovy je zákonným požadavkem v mnoha situacích. Zde je přehled těch nejdůležitějších:
           </p>
         </div>
 
-        <div class="grid gap-12">
+        <div class="grid gap-8 md:gap-12">
           {[
             {
               title: 'Výstavba nových budov',
@@ -36,20 +36,20 @@ import Footer from '../components/Footer.astro';
               desc: 'Při prodeji nebo pronájmu bytu je povinnost doložit PENB pro celou budovu. Pokud není k dispozici, lze jej nahradit vyúčtováním dodávek energií za poslední 3 roky.'
             }
           ].map((item, index) => (
-            <div class="flex gap-8 items-start">
+            <div class="flex flex-col sm:flex-row gap-4 md:gap-8 items-start">
               <div class="text-4xl font-black text-green-100 select-none">
                 {String(index + 1).padStart(2, '0')}
               </div>
               <div class="stack" style="--space: 0.5rem;">
-                <h3 class="text-2xl font-bold text-gray-900">{item.title}</h3>
+                <h3 class="text-xl md:text-2xl font-bold text-gray-900">{item.title}</h3>
                 <p class="text-lg text-gray-600 leading-relaxed max-w-4xl">{item.desc}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-8 rounded-r-xl mt-12">
-          <div class="flex gap-4">
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 md:p-8 rounded-r-xl mt-8 md:mt-12">
+          <div class="flex flex-col sm:flex-row gap-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 14c-.77 1.333.192 3 1.732 3z" />
             </svg>
