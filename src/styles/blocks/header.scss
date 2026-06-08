@@ -94,6 +94,13 @@
     }
 }
 
+.header-navigation-wrapper {
+  @media (max-width: 50rem) {
+    --cluster-justify: flex-end;
+    flex: 1;
+  }
+}
+
 .mobile-only-cta {
     display: none;
 

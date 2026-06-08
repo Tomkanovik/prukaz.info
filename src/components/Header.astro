@@ -15,28 +15,30 @@ const navItems = [
       <span class="font-bold text-xl text-green-700">Ing. Petr Novák</span>
     </a>
 
-    <div class="cluster" style="--gutter: 1rem;">
-      <a href="#kontakt" class="button header-cta" data-type="primary">Poptat konzultaci</a>
+    <div class="header-navigation-wrapper cluster" style="--gutter: 3rem;">
+      <nav class="primary-navigation" id="primary-navigation">
+        <ul class="cluster" style="--gutter: 2rem;">
+          {navItems.map(item => (
+            <li><a href={item.href} class="nav-link" aria-current={Astro.url.pathname === item.href || (item.href !== '/' && Astro.url.pathname.startsWith(item.href)) ? 'page' : undefined}>{item.name}</a></li>
+          ))}
+          <li class="mobile-only-cta"><a href="#kontakt" class="button" data-type="primary">Poptat konzultaci</a></li>
+        </ul>
+      </nav>
 
-      <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
-          <span class="sr-only">Menu</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon-hamburger h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon-close h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-      </button>
+      <div class="cluster" style="--gutter: 1rem;">
+        <a href="#kontakt" class="button header-cta" data-type="primary">Poptat konzultaci</a>
+
+        <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+            <span class="sr-only">Menu</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-hamburger h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-close h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+      </div>
     </div>
-
-    <nav class="primary-navigation" id="primary-navigation">
-      <ul class="cluster" style="--gutter: 2rem;">
-        {navItems.map(item => (
-          <li><a href={item.href} class="nav-link" aria-current={Astro.url.pathname === item.href || (item.href !== '/' && Astro.url.pathname.startsWith(item.href)) ? 'page' : undefined}>{item.name}</a></li>
-        ))}
-        <li class="mobile-only-cta"><a href="#kontakt" class="button" data-type="primary">Poptat konzultaci</a></li>
-      </ul>
-    </nav>
   </div>
 </header>
 
