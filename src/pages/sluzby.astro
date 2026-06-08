@@ -68,12 +68,9 @@ import Footer from '../components/Footer.astro';
                 <a href="tel:+420724697448" class="bg-white text-green-900 px-8 py-4 rounded-xl font-bold hover:bg-green-50 transition-colors w-full sm:w-auto text-center">Zavolat +420 724 697 448</a>
               </div>
             </div>
-            <div class="hidden md:block bg-green-800 opacity-50 relative">
-               <div class="absolute inset-0 flex items-center justify-center text-green-900/20">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                  </svg>
-               </div>
+            <div class="hidden md:block relative overflow-hidden">
+               <img src="/images/consultation.jpg" alt="Konzultace s energetickým specialistou" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay" />
+               <div class="absolute inset-0 bg-gradient-to-l from-green-900/0 to-green-900/40"></div>
             </div>
           </div>
         </div>
