@@ -5,7 +5,7 @@
   <div class="wrapper">
     <div class="bg-white rounded-[2rem] md:rounded-[3rem] shadow-xl overflow-hidden">
       <div class="grid md:grid-cols-2">
-        <div class="p-8 md:p-16 lg:p-20 stack" style="--space: 2.5rem;">
+        <div class="p-6 md:p-16 lg:p-20 stack" style="--space: 2.5rem;">
           <div class="stack" style="--space: 1rem;">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Kontaktujte mě</h2>
             <p class="text-lg text-gray-600">
@@ -45,11 +45,92 @@
              </p>
           </div>
         </div>
-        <div class="relative hidden md:block">
-           <img src="/images/petr-novak.jpg" alt="Ing. Petr Novák" class="absolute inset-0 w-full h-full object-cover" />
-           <div class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"></div>
+        <div class="p-6 md:p-16 lg:p-20 bg-gray-50/50 border-l border-gray-100">
+           <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <label for="name">Jméno a příjmení</label>
+                <input type="text" id="name" name="name" required placeholder="Vaše jméno" />
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required placeholder="vas@email.cz" />
+              </div>
+              <div class="form-group">
+                <label for="message">Zpráva</label>
+                <textarea id="message" name="message" required placeholder="S čím vám mohu pomoci?"></textarea>
+              </div>
+              <button type="submit" id="submit-button">Odeslat zprávu</button>
+              <div id="form-status" class="form-status"></div>
+           </form>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const statusDiv = document.getElementById('form-status');
+  const submitButton = document.getElementById('submit-button') as HTMLButtonElement;
+
+  if (form && statusDiv && submitButton) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      // Reset status
+      statusDiv.textContent = '';
+      statusDiv.className = 'form-status';
+      submitButton.disabled = true;
+      submitButton.textContent = 'Odesílám...';
+
+      try {
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          form.reset();
+        } else {
+          statusDiv.textContent = result.error || 'Něco se nepovedlo. Zkuste to prosím později nebo využijte telefonní kontakt.';
+          statusDiv.classList.add('is-visible', 'is-error');
+        }
+      } catch (error) {
+        statusDiv.textContent = 'Chyba připojení. Zkontrolujte prosím své připojení k internetu.';
+        statusDiv.classList.add('is-visible', 'is-error');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Odeslat zprávu';
+
+        // Hide success message after some time if needed, or keep it visible
+        if (response && response.ok) {
+           form.style.display = 'none';
+
+           const successWrapper = document.createElement('div');
+           successWrapper.className = 'stack';
+           successWrapper.style.setProperty('--space', '1rem');
+
+           const formTitle = document.createElement('h3');
+           formTitle.className = 'text-2xl font-bold text-gray-900';
+           formTitle.textContent = 'Zpráva byla odeslána';
+
+           const successMsg = document.createElement('p');
+           successMsg.className = 'text-lg text-gray-600';
+           successMsg.textContent = 'Děkujeme za zprávu! Ozvu se vám hned, jak to bude možné.';
+
+           successWrapper.appendChild(formTitle);
+           successWrapper.appendChild(successMsg);
+           form.parentElement?.prepend(successWrapper);
+        }
+      }
+    });
+  }
+</script>
