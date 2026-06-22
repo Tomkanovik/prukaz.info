@@ -27,7 +27,7 @@ export async function onRequestPost(context) {
         Authorization: `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "Webový formulář <onboarding@resend.dev>",
+        from: "Webový formulář <noreply@prukaz.info>",
         to: "tomkanovik@seznam.cz",
         subject: `Nová zpráva z webu od ${name}`,
         reply_to: email,
