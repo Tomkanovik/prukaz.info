@@ -99,37 +99,34 @@
 
         if (response.ok) {
           form.reset();
+          form.style.display = 'none';
+
+          const successWrapper = document.createElement('div');
+          successWrapper.className = 'stack';
+          successWrapper.style.setProperty('--space', '1rem');
+
+          const formTitle = document.createElement('h3');
+          formTitle.className = 'text-2xl font-bold text-gray-900';
+          formTitle.textContent = 'Zpráva byla odeslána';
+
+          const successMsg = document.createElement('p');
+          successMsg.className = 'text-lg text-gray-600';
+          successMsg.textContent = 'Děkujeme za zprávu! Ozvu se vám hned, jak to bude možné.';
+
+          successWrapper.appendChild(formTitle);
+          successWrapper.appendChild(successMsg);
+          form.parentElement?.prepend(successWrapper);
         } else {
           statusDiv.textContent = result.error || 'Něco se nepovedlo. Zkuste to prosím později nebo využijte telefonní kontakt.';
           statusDiv.classList.add('is-visible', 'is-error');
         }
       } catch (error) {
-        statusDiv.textContent = 'Chyba připojení. Zkontrolujte prosím své připojení k internetu.';
+        console.error('Form error:', error);
+        statusDiv.textContent = 'Chyba při odesílání. Zkontrolujte prosím své připojení k internetu nebo to zkuste později.';
         statusDiv.classList.add('is-visible', 'is-error');
       } finally {
         submitButton.disabled = false;
         submitButton.textContent = 'Odeslat zprávu';
-
-        // Hide success message after some time if needed, or keep it visible
-        if (response && response.ok) {
-           form.style.display = 'none';
-
-           const successWrapper = document.createElement('div');
-           successWrapper.className = 'stack';
-           successWrapper.style.setProperty('--space', '1rem');
-
-           const formTitle = document.createElement('h3');
-           formTitle.className = 'text-2xl font-bold text-gray-900';
-           formTitle.textContent = 'Zpráva byla odeslána';
-
-           const successMsg = document.createElement('p');
-           successMsg.className = 'text-lg text-gray-600';
-           successMsg.textContent = 'Děkujeme za zprávu! Ozvu se vám hned, jak to bude možné.';
-
-           successWrapper.appendChild(formTitle);
-           successWrapper.appendChild(successMsg);
-           form.parentElement?.prepend(successWrapper);
-        }
       }
     });
   }
