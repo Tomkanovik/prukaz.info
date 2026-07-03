@@ -3,9 +3,71 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Ing. Petr Novák - Energetický specialista",
+  "image": "https://prukaz.info/images/hero-energy.jpg",
+  "@id": "https://prukaz.info",
+  "url": "https://prukaz.info",
+  "telephone": "+420 724 697 448",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Brno",
+    "addressRegion": "Jihomoravský kraj",
+    "addressCountry": "CZ"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.19506,
+    "longitude": 16.606837
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opens": "08:00",
+    "closes": "17:00"
+  },
+  "sameAs": [],
+  "priceRange": "$$",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Energetické služby",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Průkaz energetické náročnosti budovy (PENB)",
+          "description": "Zpracování energetických průkazů pro rodinné i bytové domy."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Nová zelená úsporám",
+          "description": "Odborné posudky pro dotační programy."
+        }
+      }
+    ]
+  }
+};
 ---
 
-<Layout title="Ing. Petr Novák - Energetický specialista">
+<Layout
+	title="PENB a energetický specialista | Ing. Petr Novák"
+	description="Potřebujete průkaz energetické náročnosti budovy (PENB)? Nabízím rychlé a profesionální zpracování energetických štítků, auditů a poradenství pro dotace po celé ČR."
+	canonicalURL="/"
+	schemaData={schemaData}
+>
 	<Header />
 
 	<main>

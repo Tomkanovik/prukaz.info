@@ -4,23 +4,44 @@ import '../styles/main.scss';
 
 interface Props {
 	title: string;
+	description?: string;
+	canonicalURL?: string;
+	schemaData?: object;
 }
 
-const { title } = Astro.props;
+const {
+	title,
+	description = "Ing. Petr Novák - Energetický specialista MPO. Zpracování PENB, energetické audity a poradenství pro dotace Nová zelená úsporám po celé ČR.",
+	canonicalURL,
+	schemaData
+} = Astro.props;
+
+const siteUrl = "https://prukaz.info"; // Base URL for the project
+const fullCanonicalURL = canonicalURL ? new URL(canonicalURL, siteUrl).toString() : undefined;
 ---
 
 <!doctype html>
 <html lang="cs">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Ing. Petr Novák - Energetický specialista MPO" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+
+		<!-- Primary Meta Tags -->
 		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		{fullCanonicalURL && <link rel="canonical" href={fullCanonicalURL} />}
+
+
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+		{schemaData && (
+			<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+		)}
 	</head>
 	<body>
 		<slot />
