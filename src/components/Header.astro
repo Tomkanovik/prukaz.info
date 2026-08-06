@@ -5,7 +5,6 @@ const navItems = [
   { name: 'PENB', href: '/penb' },
   { name: 'Ceník', href: '/cenik' },
   { name: 'O mně', href: '/odborna-zpusobilost' },
-  { name: 'Kontakt', href: '#kontakt' },
   { name: 'Kontrola vytápění', href: 'https://www.kontrola-systemu-vytapeni.cz/', external: true },
 ];
 ---
@@ -29,16 +28,16 @@ const navItems = [
                 aria-current={!item.external && (Astro.url.pathname === item.href || (item.href !== '/' && Astro.url.pathname.startsWith(item.href))) ? 'page' : undefined}
               >
                 {item.name}
-                {item.external && <span class="external-icon">↗</span>}
+                {item.external && item.name !== 'Kontrola vytápění' && <span class="external-icon">↗</span>}
               </a>
             </li>
           ))}
-          <li class="mobile-only-cta"><a href="#kontakt" class="button" data-type="primary">Poptat konzultaci</a></li>
+          <li class="mobile-only-cta"><a href="#kontakt" class="button" data-type="primary">Kontakt</a></li>
         </ul>
       </nav>
 
       <div class="cluster" style="--gutter: 1rem;">
-        <a href="#kontakt" class="button header-cta" data-type="primary">Poptat konzultaci</a>
+        <a href="#kontakt" class="button header-cta" data-type="primary">Kontakt</a>
 
         <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
             <span class="sr-only">Menu</span>
