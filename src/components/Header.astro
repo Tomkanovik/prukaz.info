@@ -6,6 +6,7 @@ const navItems = [
   { name: 'Ceník', href: '/cenik' },
   { name: 'O mně', href: '/odborna-zpusobilost' },
   { name: 'Kontakt', href: '#kontakt' },
+  { name: 'Kontrola vytápění', href: 'https://www.kontrola-systemu-vytapeni.cz/', external: true },
 ];
 ---
 
@@ -19,7 +20,18 @@ const navItems = [
       <nav class="primary-navigation" id="primary-navigation">
         <ul class="cluster" style="--gutter: 2rem;">
           {navItems.map(item => (
-            <li><a href={item.href} class="nav-link" aria-current={Astro.url.pathname === item.href || (item.href !== '/' && Astro.url.pathname.startsWith(item.href)) ? 'page' : undefined}>{item.name}</a></li>
+            <li>
+              <a
+                href={item.href}
+                class={item.external ? "nav-link nav-link--external" : "nav-link"}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
+                aria-current={!item.external && (Astro.url.pathname === item.href || (item.href !== '/' && Astro.url.pathname.startsWith(item.href))) ? 'page' : undefined}
+              >
+                {item.name}
+                {item.external && <span class="external-icon">↗</span>}
+              </a>
+            </li>
           ))}
           <li class="mobile-only-cta"><a href="#kontakt" class="button" data-type="primary">Poptat konzultaci</a></li>
         </ul>

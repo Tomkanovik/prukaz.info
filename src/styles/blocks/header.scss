@@ -9,7 +9,7 @@
   text-decoration: none;
   color: #4a4a4a;
   font-weight: 500;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 
   &:hover {
     color: #15803d; // green-700
@@ -19,6 +19,28 @@
     color: #15803d;
     font-weight: 700;
   }
+
+  &--external {
+    color: #15803d; // Accentuate the external link with brand green
+    font-weight: 600;
+    border: 1px solid #bbf7d0; // green-200 border
+    background-color: #f0fdf4; // green-50 background
+    padding: 0.4rem 0.8rem;
+    border-radius: 9999px; // Pill button style
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    &:hover {
+      background-color: #dcfce7; // green-100 background on hover
+      border-color: #86efac; // green-300
+    }
+  }
+}
+
+.external-icon {
+  font-size: 0.85em;
+  font-weight: bold;
 }
 
 .button {
