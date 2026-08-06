@@ -22,7 +22,7 @@ import Footer from '../components/Footer.astro';
             </div>
             <h1 class="text-3xl md:text-4xl font-bold">Ceník služeb PENB</h1>
             <p class="text-xl text-gray-600 leading-relaxed">
-              Poskytujeme odborné zpracování průkazů energetické náročnosti budov s důrazem na přesnost, rychlost a férové jednání. Níže naleznete orientační ceny dle typu objektu a dodaných podkladů.
+              Poskytujeme odborné zpracování průkazů energetické náročnosti budov s důrazem na přesnost, rychlost a férové jednání. Níže naleznete jasné a přehledné ceny dle typu objektu.
             </p>
             <div class="flex items-center gap-3 text-gray-500 bg-gray-50 p-4 rounded-xl w-fit">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -36,95 +36,169 @@ import Footer from '../components/Footer.astro';
           </div>
         </div>
 
-        <div class="stack" style="--space: 2rem;">
-          <div class="flex items-center gap-4">
-             <div class="w-10 h-10 md:w-12 md:h-12 bg-green-700 text-white rounded-xl flex items-center justify-center shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                </svg>
+        <!-- Výhody služeb -->
+        <div class="grid md:grid-cols-3 gap-8 pt-4">
+           {[
+             { title: 'Rychlé dodání', desc: 'PENB zpracujeme obvykle do 3–5 pracovních dnů od předání podkladů.' },
+             { title: 'Kompletní dokumentace', desc: 'Cena zahrnuje tištěné vyhotovení i elektronickou verzi v PDF.' },
+             { title: 'Doprava v ceně', desc: 'V rámci regionu je doprava specialisty na místo zahrnuta v paušálu.' }
+           ].map(item => (
+             <div class="bg-gray-50 p-8 rounded-2xl stack" style="--space: 1rem;">
+                <h3 class="font-bold text-lg text-gray-900">{item.title}</h3>
+                <p class="text-gray-600">{item.desc}</p>
              </div>
-             <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Rodinné domy a jednotlivé byty</h2>
-          </div>
-
-          <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse">
-              <thead>
-                <tr class="bg-gray-50 border-b border-gray-200">
-                  <th class="py-6 px-8 font-bold text-gray-900 uppercase tracking-wider text-sm">Objekt / Podklady</th>
-                  <th class="py-6 px-8 font-bold text-gray-900 uppercase tracking-wider text-sm text-center">Rodinný dům jednopodlažní</th>
-                  <th class="py-6 px-8 font-bold text-gray-900 uppercase tracking-wider text-sm text-center">Rodinný dům vícepodlažní</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-200">
-                <tr>
-                  <td class="py-8 px-8 font-semibold text-gray-900">Kompletní projektová dokumentace</td>
-                  <td class="py-8 px-8 text-center text-2xl font-bold text-green-700">3 000 Kč</td>
-                  <td class="py-8 px-8 text-center text-2xl font-bold text-green-700">3 500 Kč</td>
-                </tr>
-                <tr>
-                  <td class="py-8 px-8 font-semibold text-gray-900">Podklady žádné</td>
-                  <td class="py-8 px-8 text-center text-2xl font-bold text-green-700">3 300 Kč</td>
-                  <td class="py-8 px-8 text-center text-2xl font-bold text-green-700">3 900 Kč</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="text-sm text-gray-500 italic text-right">Pozn.: Uvedené ceny jsou bez DPH.</p>
+           ))}
         </div>
 
-        <div class="stack" style="--space: 2rem;">
-          <div class="flex items-center gap-4">
-             <div class="w-10 h-10 md:w-12 md:h-12 bg-green-700 text-white rounded-xl flex items-center justify-center shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-             </div>
-             <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Bytové domy a veřejné budovy</h2>
+        <!-- Ceníkové karty -->
+        <div class="stack" style="--space: 2.5rem;">
+          <div class="text-center stack" style="--space: 0.5rem; max-width: 600px; margin: 0 auto;">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Přehledný ceník dle typu budovy</h2>
+            <p class="text-gray-600">Jednoduché a férové ceny bez skrytých poplatků.</p>
           </div>
 
-          <div class="grid md:grid-cols-3 gap-8">
-             {[
-               { title: 'Rychlé dodání', desc: 'PENB zpracujeme obvykle do 3-5 pracovních dnů od předání podkladů.' },
-               { title: 'Kompletní dokumentace', desc: 'Cena zahrnuje tištěné vyhotovení i elektronickou verzi v PDF.' },
-               { title: 'Doprava v ceně', desc: 'V rámci regionu je doprava specialisty na místo zahrnuta v paušálu.' }
-             ].map(item => (
-               <div class="bg-gray-50 p-8 rounded-2xl stack" style="--space: 1rem;">
-                  <h3 class="font-bold text-lg text-gray-900">{item.title}</h3>
-                  <p class="text-gray-600">{item.desc}</p>
-               </div>
-             ))}
+          <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+
+            <!-- Karta 1: Rodinné domy a byty -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+              <div class="stack" style="--space: 1.5rem;">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 bg-green-100 text-green-700 rounded-2xl flex items-center justify-center shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-bold text-gray-900">Rodinné domy a byty</h3>
+                    <p class="text-xs text-gray-500">Prodej, pronájem či kolaudace</p>
+                  </div>
+                </div>
+
+                <div class="border-t border-b border-gray-100 py-4 stack" style="--space: 0.25rem;">
+                  <span class="text-xs text-gray-500 uppercase tracking-wider font-bold">Cena od</span>
+                  <div class="flex items-baseline gap-1">
+                    <span class="text-4xl font-extrabold text-green-700">5 000 Kč</span>
+                    <span class="text-sm text-gray-500 font-medium">bez DPH</span>
+                  </div>
+                </div>
+
+                <ul class="space-y-4 text-gray-600">
+                  <li class="flex justify-between items-start gap-4">
+                    <span class="font-semibold">Jednopodlažní RD / byt</span>
+                    <span class="font-bold text-gray-900 shrink-0">5 000 Kč</span>
+                  </li>
+                  <li class="flex justify-between items-start gap-4 border-t border-gray-100 pt-3">
+                    <span class="font-semibold">Vícepodlažní RD</span>
+                    <span class="font-bold text-gray-900 shrink-0">5 900 Kč</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="pt-8">
+                <a href="#kontakt" class="block w-full text-center bg-green-700 text-white font-bold py-3 px-6 rounded-xl hover:bg-green-800 transition-colors">
+                  Poptat konzultaci
+                </a>
+              </div>
+            </div>
+
+            <!-- Karta 2: Bytové domy -->
+            <div class="bg-white border-2 border-green-700 rounded-3xl p-8 shadow-md relative flex flex-col justify-between">
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-green-700 text-white text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full shadow-sm">
+                Častá volba
+              </div>
+              <div class="stack" style="--space: 1.5rem;">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 bg-green-100 text-green-700 rounded-2xl flex items-center justify-center shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-bold text-gray-900">Bytové domy</h3>
+                    <p class="text-xs text-gray-500">Pro společenství vlastníků (SVJ) a družstva</p>
+                  </div>
+                </div>
+
+                <div class="border-t border-b border-gray-100 py-4 stack" style="--space: 0.25rem;">
+                  <span class="text-xs text-gray-500 uppercase tracking-wider font-bold">Cena od</span>
+                  <div class="flex items-baseline gap-1">
+                    <span class="text-4xl font-extrabold text-green-700">8 500 Kč</span>
+                    <span class="text-sm text-gray-500 font-medium">bez DPH</span>
+                  </div>
+                </div>
+
+                <ul class="space-y-4 text-gray-600">
+                  <li class="flex justify-between items-start gap-4">
+                    <div>
+                      <span class="font-semibold block">Menší bytový dům</span>
+                      <span class="text-xs text-gray-500">cca do 10 bytů</span>
+                    </div>
+                    <span class="font-bold text-gray-900 shrink-0 pt-0.5">8 500 Kč</span>
+                  </li>
+                  <li class="flex justify-between items-start gap-4 border-t border-gray-100 pt-3">
+                    <div>
+                      <span class="font-semibold block">Větší bytový dům</span>
+                      <span class="text-xs text-gray-500">20 a více bytů</span>
+                    </div>
+                    <span class="font-bold text-gray-900 shrink-0 pt-0.5">14 500 Kč</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="pt-8">
+                <a href="#kontakt" class="block w-full text-center bg-green-700 text-white font-bold py-3 px-6 rounded-xl hover:bg-green-800 transition-colors">
+                  Poptat PENB
+                </a>
+              </div>
+            </div>
+
+            <!-- Karta 3: Veřejné budovy -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+              <div class="stack" style="--space: 1.5rem;">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 bg-green-100 text-green-700 rounded-2xl flex items-center justify-center shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-bold text-gray-900">Veřejné budovy</h3>
+                    <p class="text-xs text-gray-500">Školy, úřady, administrativní celky</p>
+                  </div>
+                </div>
+
+                <div class="border-t border-b border-gray-100 py-4 stack" style="--space: 0.25rem;">
+                  <span class="text-xs text-gray-500 uppercase tracking-wider font-bold">Cena od</span>
+                  <div class="flex items-baseline gap-1">
+                    <span class="text-4xl font-extrabold text-green-700">8 500 Kč</span>
+                    <span class="text-sm text-gray-500 font-medium">bez DPH</span>
+                  </div>
+                </div>
+
+                <ul class="space-y-4 text-gray-600">
+                  <li class="flex justify-between items-start gap-4">
+                    <span class="font-semibold">Jednoduchá budova</span>
+                    <span class="font-bold text-gray-900 shrink-0">8 500 Kč</span>
+                  </li>
+                  <li class="flex justify-between items-start gap-4 border-t border-gray-100 pt-3">
+                    <span class="font-semibold">Členitá budova</span>
+                    <span class="font-bold text-gray-900 shrink-0">12 700 Kč</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="pt-8">
+                <a href="#kontakt" class="block w-full text-center bg-green-700 text-white font-bold py-3 px-6 rounded-xl hover:bg-green-800 transition-colors">
+                  Poptat nacenění
+                </a>
+              </div>
+            </div>
+
           </div>
 
-          <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse">
-              <thead>
-                <tr class="bg-gray-50 border-b border-gray-200">
-                  <th class="py-6 px-8 font-bold text-gray-900 uppercase tracking-wider text-sm">Objekt / Podklady</th>
-                  <th class="py-6 px-8 font-bold text-gray-900 uppercase tracking-wider text-sm text-center">Bytový dům cca 10 bytů <span class="block text-[10px] normal-case font-normal">(cena od)</span></th>
-                  <th class="py-6 px-8 font-bold text-gray-900 uppercase tracking-wider text-sm text-center">Bytový dům cca 20 a více bytů <span class="block text-[10px] normal-case font-normal">(cena od)</span></th>
-                  <th class="py-6 px-8 font-bold text-gray-900 uppercase tracking-wider text-sm text-center">Veřejná budova jednoduchá <span class="block text-[10px] normal-case font-normal">(cena od)</span></th>
-                  <th class="py-6 px-8 font-bold text-gray-900 uppercase tracking-wider text-sm text-center">Veřejná budova členitá <span class="block text-[10px] normal-case font-normal">(cena od)</span></th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-200">
-                <tr>
-                  <td class="py-8 px-8 font-semibold text-gray-900">Kompletní projektová dokumentace</td>
-                  <td class="py-8 px-8 text-center text-xl font-bold text-green-700">4 200 Kč</td>
-                  <td class="py-8 px-8 text-center text-xl font-bold text-green-700">7 150 Kč</td>
-                  <td class="py-8 px-8 text-center text-xl font-bold text-green-700">5 700 Kč</td>
-                  <td class="py-8 px-8 text-center text-xl font-bold text-green-700">8 500 Kč</td>
-                </tr>
-                <tr>
-                  <td class="py-8 px-8 font-semibold text-gray-900">Podklady žádné</td>
-                  <td class="py-8 px-8 text-center text-xl font-bold text-green-700">5 700 Kč</td>
-                  <td class="py-8 px-8 text-center text-xl font-bold text-green-700">8 500 Kč</td>
-                  <td class="py-8 px-8 text-center text-xl font-bold text-green-700">7 150 Kč</td>
-                  <td class="py-8 px-8 text-center text-xl font-bold text-green-700">9 900 Kč</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="text-center pt-4">
+            <p class="text-sm text-gray-500 italic">Pozn.: Uvedené ceny jsou orientační a bez DPH. Každá zakázka může být individuálně upravena podle složitosti objektu.</p>
           </div>
-          <p class="text-sm text-gray-500 italic text-right">Pozn.: Uvedené ceny jsou bez DPH.</p>
         </div>
 
       </div>
