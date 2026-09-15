@@ -1,5 +1,5 @@
-
 name = "prukaz"
+main = "worker/index.ts"
 compatibility_date = "2025-02-24"
 
 [assets]
