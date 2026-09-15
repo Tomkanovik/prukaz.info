@@ -28,7 +28,7 @@ export async function onRequestPost(context) {
       },
       body: JSON.stringify({
         from: "Webový formulář <noreply@prukaz.info>",
-        to: "tomkanovik@seznam.cz",
+        to: ["tomkanovik@seznam.cz"],
         subject: `Nová zpráva z webu od ${name}`,
         reply_to: email,
         html: `
@@ -41,15 +41,22 @@ export async function onRequestPost(context) {
       }),
     });
 
+    let resData;
+    try {
+      resData = await response.json();
+    } catch {
+      resData = null;
+    }
+
     if (response.ok) {
       return new Response(
-        JSON.stringify({ success: true, message: "E-mail byl úspěšně odeslán." }),
+        JSON.stringify({ success: true, message: "E-mail byl úspěšně odeslán.", data: resData }),
         { status: 200, headers: { "Content-Type": "application/json" } }
       );
     } else {
-      const errorData = await response.json();
+      const errorMessage = resData?.message || resData?.error || "Chyba při odesílání e-mailu přes Resend API.";
       return new Response(
-        JSON.stringify({ error: "Chyba při odesílání e-mailu.", details: errorData }),
+        JSON.stringify({ error: errorMessage, details: resData }),
         { status: response.status, headers: { "Content-Type": "application/json" } }
       );
     }
