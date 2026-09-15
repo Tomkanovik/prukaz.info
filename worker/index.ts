@@ -82,7 +82,7 @@ async function handleSendEmail(request: Request, env: Env): Promise<Response> {
         Authorization: `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: 'Webový formulář <noreply@prukaz.info>',
+        from: 'Webový formulář <noreply@mg.prukaz.info>',
         to,
         subject,
         html,
