@@ -95,7 +95,12 @@
           body: JSON.stringify(data),
         });
 
-        const result = await response.json();
+        let result;
+        try {
+          result = await response.json();
+        } catch {
+          result = null;
+        }
 
         if (response.ok) {
           form.reset();
@@ -117,7 +122,7 @@
           successWrapper.appendChild(successMsg);
           form.parentElement?.prepend(successWrapper);
         } else {
-          statusDiv.textContent = result.error || 'Něco se nepovedlo. Zkuste to prosím později nebo využijte telefonní kontakt.';
+          statusDiv.textContent = result?.error || 'Něco se nepovedlo. Zkuste to prosím později nebo využijte telefonní kontakt.';
           statusDiv.classList.add('is-visible', 'is-error');
         }
       } catch (error) {
