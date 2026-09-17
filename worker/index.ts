@@ -54,7 +54,7 @@ async function handleSendEmail(request: Request, env: Env): Promise<Response> {
       replyTo = body.reply_to || body.replyTo;
     } else if (body.name && body.email && body.message) {
       // Contact form payload ({ name, email, message })
-      to = ['tomkanovik@seznam.cz'];
+      to = ['energ.auditor@seznam.cz'];
       replyTo = body.email;
       subject = `Nová zpráva z webu od ${body.name}`;
       const safeMessage = String(body.message).replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
